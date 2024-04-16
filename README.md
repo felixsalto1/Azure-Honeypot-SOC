@@ -26,7 +26,7 @@ The primary goal of this project was to [set up virtual machines that were inten
 
 ## Methodology
 
-- <b>*Creating the honeynet*</b>: I began by [deploying multiple vulnerable virtual machines](https://github.com/AmiliaSalva/Azure-VM-Prep/blob/main/README.md) in Azure, simulating an insecure environment.
+- <b>*Creating the honeynet*</b>: I began by [running a vulnerable virtual machine](https://github.com/felixsalto1/Azure-VM-Config/blob/main/README.md) in Azure, simulating an insecure environment.
 
 - <b>*Monitoring and analysis*</b>: Azure was configured to ingest log sources from various resources into a log analytics workspace. Microsoft Sentinel was then used to build attack maps, trigger alerts, and create incidents based on the collected data.
 
@@ -38,14 +38,15 @@ The primary goal of this project was to [set up virtual machines that were inten
 
 
 ## Architecture Prior to Implementing Hardening Measures and Security Controls
-![Architecture Diagram](https://i.imgur.com/1tLjWY9.png)
+ <img src="https://i.imgur.com/BscJ0qj.png" >
 
 <b>Before Hardening Measures and Security Controls:</b>
 
 - In the "BEFORE" stage of the project, all resources were initially deployed with public exposure to the internet. This setup was intentionally insecure to attract potential cyber attackers and observe their tactics. The Virtual Machines had both their Network Security Groups (NSGs) and built-in firewalls wide open, allowing unrestricted access from any source. Additionally, all other resources, such as storage accounts and databases, were deployed with public endpoints visible to the internet, without utilizing any Private Endpoints for added security.
 
 ## Architecture After Implementing Hardening Measures and Security Controls
-![Architecture Diagram](https://i.imgur.com/ch1cAMU.png)
+ <img src="https://i.imgur.com/GPs3liY.png" >
+ 
  <b>For the "AFTER" stage, I implemented a series of hardening measures and security controls to improve the environment's overall security posture. These improvements included:</b>
 
 - <b>Network Security Groups (NSGs)</b>: I hardened the NSGs by blocking all inbound and outbound traffic, with the sole exception of my own public IP address. This ensured that only authorized traffic from a trusted source was allowed to access the virtual machines.
