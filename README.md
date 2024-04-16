@@ -6,7 +6,7 @@
  I am excited to introduce my latest project, which centers on constructing a honeypot in Azure to replicate real-world cyber attacks. This endeavor highlights my proficiency in Azure security, incident response, and environment hardening strategies. Through this project, I aim to demonstrate not only my technical abilities but also my commitment to enhancing cybersecurity defenses and readiness in today's digital landscape.
 
 ## Objective
-The primary goal of this project was to [set up virtual machines that were intentionally vulnerable](https://github.com/felixsalto1/Azure-VM-Config/blob/main/README.md) within the Azure enviorment to attract and analyze cyber attacks. This initiative enabled me to gain deeper insights into the tactics and techniques employed by attackers, thereby enhancing my understanding of cybersecurity threats. While also demonstrating my capability to promptly and efficiently respond to any identified issues, showcasing my proficiency in incident response and threat mitigation within cloud environments.
+The primary goal of this project was to [set up a virtual machine that was intentionally vulnerable](https://github.com/felixsalto1/Azure-VM-Config/blob/main/README.md) within the Azure enviorment to attract and analyze cyber attacks. This initiative enabled me to gain deeper insights into the tactics and techniques employed by attackers, thereby enhancing my understanding of cybersecurity threats. While also demonstrating my capability to promptly and efficiently respond to any identified issues, showcasing my proficiency in incident response and threat mitigation within cloud environments.
 
 ## Technologies, Regulations, and Azure Components Employed:
 
@@ -42,7 +42,7 @@ The primary goal of this project was to [set up virtual machines that were inten
 
 <b>Before Hardening Measures and Security Controls:</b>
 
-- In the "BEFORE" stage of the project, all resources were initially deployed with public exposure to the internet. This setup was intentionally insecure to attract potential cyber attackers and observe their tactics. The Virtual Machines had both their Network Security Groups (NSGs) and built-in firewalls wide open, allowing unrestricted access from any source. Additionally, all other resources, such as storage accounts and databases, were deployed with public endpoints visible to the internet, without utilizing any Private Endpoints for added security.
+- In the "BEFORE" stage of the project, all resources were initially deployed with public exposure to the internet. This setup was intentionally insecure to attract potential cyber attackers and observe their tactics. The Virtual Machine had both their Network Security Groups (NSGs) and built-in firewalls wide open, allowing unrestricted access from any source. Additionally, all other resources, such as storage accounts and databases, were deployed with public endpoints visible to the internet, without utilizing any Private Endpoints for added security.
 
 ## Architecture After Implementing Hardening Measures and Security Controls
  <img src="https://i.imgur.com/GPs3liY.png" >
@@ -71,21 +71,14 @@ enabling the creation of visualizations that effectively illustrated the cyber t
 - <b>This attack map demonstrates the consequences of leaving the Network Security Group (NSG) open, as it allowed for malicious traffic to flow unimpeded. This visualization underscores the importance of implementing proper security measures, such as restricting NSG rules, to prevent unauthorized access and minimize potential threats.</b>
 
 
-![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/JeElX9R.png)<br>
-
- <br />
- <br />
- 
- - <b>This attack map highlights the numerous syslog authentication failures experienced by the Linux server I deployed, indicating that unauthorized access attempts were made from outisde. This serves as a reminder of the importance of securing Linux servers with strong authentication mechanisms and monitoring system logs for signs of intrusion attempts.</b>
- 
-![Linux Syslog Auth Failures](https://i.imgur.com/QW8PF0o.png)<br>
+<img src="https://i.imgur.com/HNBdFxc.png" >
 
  <br />
  <br />
  
  - <b>This attack map showcases numerous RDP and SMB failures, illustrating the persistent attempts by potential attackers to exploit these protocols. The visualization emphasizes the need for securing remote access and file sharing services to protect against unauthorized access and potential cyber threats.</b>
  
-![Windows RDP/SMB Auth Failures](https://i.imgur.com/SETmQBl.png)<br>
+<img src="https://i.imgur.com/0q1hYJV.png" >
 
  <br />
  <br />
@@ -100,14 +93,13 @@ enabling the creation of visualizations that effectively illustrated the cyber t
 ## Metrics Before Hardening / Security Controls
 
 The following table shows the metrics we measured in our insecure environment for 24 hours:
-Start Time 2023-05-02 17:02:00 PM
-Stop Time 2023-05-03 17:02:00 PM
+Start Time 2024-04-11 18:06:00 PM
+Stop Time 2024-04-12 18:06:00 PM
 
 | Metric                   | Count
 | ------------------------ | -----
 | SecurityEvent (Windows VM)            | 21182
-| Syslog (Linux VM)                   | 4877
-| SecurityAlert (Microsoft Defender for Cloud            | 0
+| SecurityAlert (Microsoft Defender for Cloud)            | 0
 | SecurityIncident (Sentinel Incidents)        | 343
 | NSG Inbound Malicious Flows Allowed | 969
 
@@ -116,21 +108,19 @@ Stop Time 2023-05-03 17:02:00 PM
 ## Metrics After Hardening / Security Controls
 
 The following table shows the metrics we measured in our environment for another 24 hours, but after we have applied security controls:
-Start Time 2023-03-18 15:37
-Stop Time	2023-03-19 15:37
+Start Time 2024-04-13 16:42
+Stop Time	2024-03-15 16:42
 
 
 | Metric                   | Count
 | ------------------------ | -----
 | SecurityEvent (Windows VM)            | 783
-| Syslog (Linux VM)                   | 23
-| SecurityAlert (Microsoft Defender for Cloud            | 0
+| SecurityAlert (Microsoft Defender for Cloud)            | 0
 | SecurityIncident (Sentinel Incidents)        | 0
 | NSG Inbound Malicious Flows Allowed | 0
 
 ## Conclusion
 
-In conclusion, I set up a compact, but effective honeynet using Microsoft Azure's robust cloud infrastructure. Microsoft Sentinel was then utilized to trigger alerts and generate incidents based on the logs ingested from the implemented watch lists. Baseline metrics were recorded in the unprotected environment before the implementation of any security controls. Following this, a range of security measures were enforced to fortify the network against potential threats. Upon implementation of these controls, another set of measurements was taken.
+In conclusion, I established a compact yet potent honeypot using Microsoft Azure's resilient cloud infrastructure. Leveraging Microsoft Sentinel, I configured alerts and incident generation based on ingested logs from implemented watch lists. Initial baseline metrics were established in the unprotected environment, prior to the introduction of any security measures. Subsequently, a series of security protocols were implemented to bolster the network against potential threats.
 
-The comparison of pre- and post-implementation metrics demonstrated a significant reduction in security events and incidents, which highlights the effectiveness of the enforced security controls.
-It's important to mention that if the network's resources were extensively engaged by regular users, it's plausible that a higher number of security events and alerts could have been produced within the 24-hour timeframe post-security control implementation.
+Comparing pre- and post-implementation metrics revealed a notable decrease in security events and incidents, underscoring the efficacy of the implemented security measures. It's worth noting that if the network's resources had been actively utilized by regular users, it's conceivable that a greater number of security events and alerts could have occurred within the 24-hour timeframe following the implementation of security controls.
